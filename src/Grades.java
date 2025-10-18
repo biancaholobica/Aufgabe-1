@@ -18,5 +18,17 @@ public class Grades {
         return failingGrades;
     }
 
-
+    public List<Integer> getRoundedGrades() {
+        List<Integer> roundedGrades =  new ArrayList<>();
+        for (int grade : grades) {
+            if (grade >= 38) {
+                int multiple = ((grade / 5) + 1) * 5; //urmatorul multiplu de 5
+                if (multiple - grade < 3) {
+                    grade = multiple;
+                }
+            }
+            roundedGrades.add(grade);
+        }
+        return roundedGrades;
+    }
 }
