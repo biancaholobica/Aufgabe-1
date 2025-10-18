@@ -13,20 +13,16 @@ public class Main {
 
         Grades grades = new Grades(inputGrades);
 
-        // Note insuficiente
         List<Integer> failing = grades.getFailingGrades();
         System.out.println("Failing grades: " + failing);
 
-        // Note rotunjite
         List<Integer> rounded = grades.getRoundedGrades();
         System.out.println("Rounded grades: " + rounded);
 
-//        // Media notelor
-//        double average = grades.getAverageGrade();
-//        System.out.println("Average grade: " + average);
-//
-//        // Nota maximă
-//        int maxGrade = grades.getMaxRoundedGrade();
-//        System.out.println("Maximum rounded grade: " + maxGrade);
+        double average = grades.getAverageGrade();
+        System.out.println("Average grade: " + average);
+
+        int maxGrade = grades.getMaxRoundedGrade();
+        System.out.println("Maximum rounded grade: " + maxGrade);
     }
 }
