@@ -1,23 +1,16 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        List<Integer> inputGrades = new ArrayList<>();
-        inputGrades.add(29);
-        inputGrades.add(37);
-        inputGrades.add(38);
-        inputGrades.add(41);
-        inputGrades.add(84);
-        inputGrades.add(67);
+        int[] inputGrades = {29, 37, 38, 41, 84, 67};
 
         Grades grades = new Grades(inputGrades);
 
-        List<Integer> failing = grades.getFailingGrades();
-        System.out.println("Failing grades: " + failing);
+        int[] failing = grades.getFailingGrades();
+        System.out.println("Failing grades: " + Arrays.toString(failing));
 
-        List<Integer> rounded = grades.getRoundedGrades();
-        System.out.println("Rounded grades: " + rounded);
+        int[] rounded = grades.getRoundedGrades();
+        System.out.println("Rounded grades: " + Arrays.toString(rounded));
 
         double average = grades.getAverageGrade();
         System.out.println("Average grade: " + average);

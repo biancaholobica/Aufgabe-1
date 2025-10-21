@@ -1,49 +1,61 @@
-import java.util.ArrayList;
-import java.util.List;
-
 public class Grades {
-    private List<Integer> grades = new ArrayList<>();
+    private int[] grades;
 
-    public Grades(List<Integer> inputGrades) {
-        grades = inputGrades;
+    public Grades(int[] inputGrades) {
+        this.grades = inputGrades;
     }
 
-    public List<Integer> getFailingGrades() {
-        List<Integer> failingGrades =  new ArrayList<>();
+    public int[] getFailingGrades() {
+        int count = 0;
         for (int grade : grades) {
-            if (grade < 40){
-                failingGrades.add(grade);
+            if (grade < 40) {
+                count++;
             }
         }
+
+        // cream un array de dimensiune count
+        int[] failingGrades = new int[count];
+        int index = 0;
+        for (int grade : grades) {
+            if (grade < 40) {
+                failingGrades[index++] = grade;
+            }
+        }
+
         return failingGrades;
     }
 
-    public List<Integer> getRoundedGrades() {
-        List<Integer> roundedGrades =  new ArrayList<>();
-        for (int grade : grades) {
+    public int[] getRoundedGrades() {
+        int[] roundedGrades = new int[grades.length];
+
+        for (int i = 0; i < grades.length; i++) {
+            int grade = grades[i];
+
             if (grade >= 38) {
-                int multiple = ((grade / 5) + 1) * 5; //urmatorul multiplu de 5
+                int multiple = ((grade / 5) + 1) * 5; // urmatorul multiplu de 5
                 if (multiple - grade < 3) {
                     grade = multiple;
                 }
             }
-            roundedGrades.add(grade);
+
+            roundedGrades[i] = grade;
         }
+
         return roundedGrades;
     }
 
     public double getAverageGrade() {
-        List<Integer> roundedGrades = getRoundedGrades();
+        int[] roundedGrades = getRoundedGrades();
         int sum = 0;
         for (int grade : roundedGrades) {
             sum += grade;
         }
-        return (double) sum / roundedGrades.size();
+        return (double) sum / roundedGrades.length;
     }
 
     public int getMaxRoundedGrade() {
-        List<Integer> roundedGrades = getRoundedGrades();
-        int max = roundedGrades.get(0);
+        int[] roundedGrades = getRoundedGrades();
+        int max = roundedGrades[0];
         for (int grade : roundedGrades) {
             if (grade > max) {
                 max = grade;
